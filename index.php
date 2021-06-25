@@ -12,11 +12,24 @@
     <button type="submit">Выполнить</button> 
 </form>
 <br>
-<table width="225px" cellspacing="0px" cellpadding="0px" border="1px">
+<table style="max-width:100%;text-align:center" cellspacing="0px" cellpadding="0px" border="1px">
 <?php
-for($row=1;$row<=$_POST['height'];$row++) {
-    echo "<tr>";
-    for($col=1;$col<=$_POST['widht'];$col++) {
+$height = $width = 8;
+if ($_POST['height']) $height = $_POST['height'];
+if ($_POST['widht']) $width = $_POST['widht'];
+
+$alfabet = array("A","B","C","D","E","F","G","H","I","J", "K", "L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+$caption_width = [];
+
+while (count($caption_width) < $width) {
+    $caption_width = array_merge($caption_width, $alfabet);
+}
+
+array_unshift( $caption_width, "");
+
+for($row=1;$row<=$height;$row++) {
+    echo '<tr><td style="border:none;width:25px">'.$row.'</td>';
+    for($col=1;$col<=$width;$col++) {
         $total = $row+$col;
         if($total%2==0) {
             echo "<td height=25px width=25px bgcolor=#FFFFFF></td>";
@@ -26,9 +39,23 @@ for($row=1;$row<=$_POST['height'];$row++) {
     }
     echo "</tr>";
 }
+
+echo '<tr>';
+
+for($col2=0;$col2<=$width;$col2++) {
+    if ($col2 == 0) {
+        echo '<td style="border:none;"></td>';
+    } else {
+        echo '<td style="border:none;">'.$caption_width[$col2].'</td>';
+    }
+}
+
+echo '</tr>';
+
+function debug($arr) {
+    echo "<pre>" . print_r($arr, true) . "</pre>";
+}
 ?>
 </table>
 </body>
 </html>
-
-
