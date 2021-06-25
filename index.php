@@ -7,8 +7,8 @@
 <body> 
 <h3>Шахматная доска с использованием цикла For</h3>
 <form action="" method="post">
-    <input type="text" name="height" placeholder="Высота" required>
-    <input type="text" name="widht" placeholder="Ширина" required>
+    Высота: <input type="text" name="height" placeholder="8">
+    Ширина: <input type="text" name="widht" placeholder="8">
     <button type="submit">Выполнить</button> 
 </form>
 <br>
