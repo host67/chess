@@ -9,8 +9,8 @@
 <h3>Шахматная доска</h3>
 <?php 
 $height = $width = 8;
-if ($_POST['height'] || $_POST['height'] === 0) $height = validation($_POST['height']);
-if ($_POST['width'] || $_POST['width'] === 0) $width = validation($_POST['width']);
+if ($_POST['height'] || $_POST['height'] == 0) $height = validation($_POST['height']);
+if ($_POST['width'] || $_POST['width'] == 0) $width = validation($_POST['width']);
 ?>
 <form action="" method="post">
     Высота: <input type="text" name="height" placeholder="<?php echo $height ?>">
