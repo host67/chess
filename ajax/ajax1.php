@@ -47,7 +47,12 @@ abstract class Board
 
     public function getSize()
     {
-        return array('width'=>$this->width, 'height'=>$this->height, 'horizontTitle'=>$this->horizontTitle);
+        return array('width'=>$this->width, 'height'=>$this->height);
+    }
+    
+    public function getHorizontTitle()
+    {
+        return $this->horizontTitle;
     }
 }
 
@@ -56,7 +61,8 @@ class Chess extends Board
     public function generateBoard()
     {
         $arrSize = $this->getSize();
-        array_unshift($arrSize['horizontTitle'], " ");
+        $horizontTitle = $this->getHorizontTitle();
+        array_unshift($horizontTitle, " ");
         $board = '<table cellspacing="0px" cellpadding="0px" border="1px">';
         for($row=1;$row<=$arrSize['height'];$row++) {
             $board .= '<tr><td class="caption-height">'.$row.'</td>';
@@ -75,7 +81,7 @@ class Chess extends Board
             if ($col2 == 0) {
                 $board .= '<td class="no-border"></td>';
             } else {
-                $board .= '<td class="no-border">'.$arrSize['horizontTitle'][$col2].'</td>';
+                $board .= '<td class="no-border">'.$horizontTitle[$col2].'</td>';
             }
         }
         $board .= '</tr></table>';
@@ -88,7 +94,8 @@ class HorizontalStripes extends Board
     public function generateBoard()
     {
         $arrSize = $this->getSize();
-        array_unshift($arrSize['horizontTitle'], " ");
+        $horizontTitle = $this->getHorizontTitle();
+        array_unshift($horizontTitle, " ");
         $board = '<table cellspacing="0px" cellpadding="0px" border="1px">';
         for($row=1;$row<=$arrSize['height'];$row++) {
             $board .= '<tr><td class="caption-height">'.$row.'</td>';
@@ -106,7 +113,7 @@ class HorizontalStripes extends Board
             if ($col2 == 0) {
                 $board .= '<td class="no-border"></td>';
             } else {
-                $board .= '<td class="no-border">'.$arrSize['horizontTitle'][$col2].'</td>';
+                $board .= '<td class="no-border">'.$horizontTitle[$col2].'</td>';
             }
         }
         $board .= '</tr></table>';
@@ -119,7 +126,8 @@ class VerticalStripes extends Board
     public function generateBoard()
     {
         $arrSize = $this->getSize();
-        array_unshift($arrSize['horizontTitle'], " ");
+        $horizontTitle = $this->getHorizontTitle();
+        array_unshift($horizontTitle, " ");
         $board = '<table cellspacing="0px" cellpadding="0px" border="1px">';
         for($row=1;$row<=$arrSize['height'];$row++) {
             $board .= '<tr><td class="caption-height">'.$row.'</td>';
@@ -137,7 +145,7 @@ class VerticalStripes extends Board
             if ($col2 == 0) {
                 $board .= '<td class="no-border"></td>';
             } else {
-                $board .= '<td class="no-border">'.$arrSize['horizontTitle'][$col2].'</td>';
+                $board .= '<td class="no-border">'.$horizontTitle[$col2].'</td>';
             }
         }
         $board .= '</tr></table>';
